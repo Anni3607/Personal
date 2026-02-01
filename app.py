@@ -12,26 +12,30 @@ if "yes" not in st.session_state:
 if st.session_state.yes:
     st.balloons()
 
-    st.markdown("""
+    # Title (simple markdown only)
+    st.markdown(
+        "<h1 style='text-align:center; color:#4b0033;'>Pooja 💖</h1>"
+        "<h2 style='text-align:center;'>You chose me 🥺</h2>",
+        unsafe_allow_html=True
+    )
+
+    # Clean HTML block (NO markdown)
+    components.html("""
     <div style="
         background: linear-gradient(135deg,#ff9a9e,#fad0c4);
         padding:45px;
         border-radius:30px;
-        text-align:center;
+        max-width:700px;
+        margin:30px auto;
         font-family:'Comic Sans MS', cursive;
         color:#4b0033;
-        max-width:700px;
-        margin:auto;
+        text-align:center;
     ">
-        <h1>Pooja 💖</h1>
-        <h2>You chose me 🥺</h2>
-
         <div style="
             background:#1c1f26;
             color:white;
             padding:25px;
             border-radius:15px;
-            margin-top:25px;
             font-size:18px;
             line-height:1.6;
         ">
@@ -48,9 +52,9 @@ if st.session_state.yes:
             </span>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """, height=420)
 
-    # Audio appears after interaction (browser-safe)
+    # Audio (browser-safe, after click)
     st.audio("varoon.mp3")
 
     st.stop()
@@ -73,7 +77,7 @@ and still choose you when you’re mad ❤️
 """, unsafe_allow_html=True)
 
 
-# ---------- NO BUTTON PRANK (HTML + JS ONLY) ----------
+# ---------- NO BUTTON PRANK (HTML ONLY) ----------
 components.html("""
 <style>
 #box {
@@ -114,7 +118,7 @@ noBtn.addEventListener("mouseenter", () => {
 """, height=160)
 
 
-# ---------- SINGLE REAL YES BUTTON ----------
+# ---------- SINGLE YES BUTTON ----------
 st.markdown("<br>", unsafe_allow_html=True)
 if st.button("Yes 💘"):
     st.session_state.yes = True
