@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="For Pooja 💖",
@@ -29,6 +30,8 @@ if "yes" in params:
             text-align: center;
             color: #4b0033;
             font-family: 'Comic Sans MS', cursive;
+            max-width: 500px;
+            margin: auto;
         ">
             <h1>YAYYYYY 💕🎉</h1>
 
@@ -63,72 +66,110 @@ if "yes" in params:
 
 # ---------------- MAIN PAGE ----------------
 else:
-    st.markdown(
+    components.html(
         """
+        <html>
+        <head>
         <style>
-        body {
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-        }
-        #container {
-            position: relative;
-            height: 280px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        .btn {
-            font-size: 18px;
-            padding: 12px 32px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-family: "Comic Sans MS", cursive;
-        }
-        #yes-btn {
-            background-color: #ff4d6d;
-            color: white;
-            margin-right: 30px;
-        }
-        #no-btn {
-            background-color: #ffd6e0;
-            color: #4b0033;
-            position: absolute;
-        }
+            body {
+                margin: 0;
+                height: 100vh;
+                background: radial-gradient(circle at top, #ffb6c1, #1a001a);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Comic Sans MS', cursive;
+                color: #fff;
+            }
+
+            .card {
+                background: rgba(0,0,0,0.55);
+                padding: 40px;
+                border-radius: 28px;
+                width: 380px;
+                text-align: center;
+                box-shadow: 0 0 35px rgba(255,105,180,0.45);
+            }
+
+            h1 {
+                margin-bottom: 5px;
+                color: #ff69b4;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            p {
+                font-size: 15px;
+                line-height: 1.6;
+                opacity: 0.9;
+            }
+
+            .buttons {
+                position: relative;
+                height: 90px;
+                margin-top: 25px;
+            }
+
+            button {
+                padding: 12px 28px;
+                border-radius: 30px;
+                border: none;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            #yes {
+                background: #ff4d6d;
+                color: white;
+            }
+
+            #no {
+                background: #ffd6e0;
+                color: #4b0033;
+                position: absolute;
+            }
         </style>
+        </head>
 
-        <div style="text-align:center; font-family:'Comic Sans MS', cursive; color:#4b0033;">
-            <h1>Pooja 💖</h1>
-            <h2>Will you be my Valentine?</h2>
+        <body>
+            <div class="card">
+                <h1>Pooja 💖</h1>
+                <h2>Will you be my Valentine?</h2>
 
-            <p>
-                I promise to:<br>
-                • be your go-to guy<br>
-                • listen to your yaps 😌<br>
-                • still choose you even when you’re mad ❤️
-            </p>
+                <p>
+                    I promise to:<br>
+                    • be your go-to guy<br>
+                    • listen to your yaps 😌<br>
+                    • still choose you even when you’re mad ❤️
+                </p>
 
-            <p style="font-size:14px; opacity:0.8;">
-                (No is here just to test your patience, chapli 😏)
-            </p>
-        </div>
+                <p style="font-size:13px; opacity:0.75;">
+                    (No is here just to test your patience, chapli 😏)
+                </p>
 
-        <div id="container">
-            <button class="btn" id="yes-btn" onclick="yesClicked()">Yes 💘</button>
-            <button class="btn" id="no-btn" onmouseover="moveButton()">No 😈</button>
-        </div>
+                <div class="buttons">
+                    <button id="yes" onclick="goYes()">Yes 💘</button>
+                    <button id="no" onmouseover="runAway()">No 😈</button>
+                </div>
+            </div>
 
-        <script>
-        function moveButton() {
-            const btn = document.getElementById("no-btn");
-            const x = Math.random() * 230;
-            const y = Math.random() * 150;
-            btn.style.left = x + "px";
-            btn.style.top = y + "px";
-        }
+            <script>
+                function runAway() {
+                    const btn = document.getElementById("no");
+                    const x = Math.random() * 240;
+                    const y = Math.random() * 60;
+                    btn.style.left = x + "px";
+                    btn.style.top = y + "px";
+                }
 
-        function yesClicked() {
-            window.location.search = "?yes=true";
-        }
-        </script>
+                function goYes() {
+                    window.location.search = "?yes=true";
+                }
+            </script>
+        </body>
+        </html>
         """,
-        unsafe_allow_html=True
+        height=650
     )
