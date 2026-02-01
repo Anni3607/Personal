@@ -15,7 +15,7 @@ if st.session_state.yes:
     # Title (simple markdown only)
     st.markdown(
         "<h1 style='text-align:center; color:#4b0033;'>Pooja 💖</h1>"
-        "<h2 style='text-align:center;'>You chose me 🥺</h2>",
+        "<h2 style='text-align:center;'>Aww, You chose me 🥺</h2>",
         unsafe_allow_html=True
     )
 
@@ -67,8 +67,10 @@ st.markdown("""
 
 <p style="text-align:center; opacity:0.85; margin-top:20px;">
 I promise to listen to your yaps,<br>
-steal your food,<br>
-and still choose you when you’re mad ❤️
+buy you perfumes, take you on long drives,<br>
+never smoke, wash dishes everyday,<br>
+never let you down, choose patience over ego,<br>
+and always choose you even when you’re mad ❤️
 </p>
 
 <p style="text-align:center; font-size:14px; opacity:0.7;">
