@@ -26,25 +26,31 @@ if st.session_state.yes:
         <h1>Pooja 💖</h1>
         <h2>You chose me 🥺</h2>
 
-        <p style="font-size:18px; margin-top:20px;">
+        <div style="
+            background:#1c1f26;
+            color:white;
+            padding:25px;
+            border-radius:15px;
+            margin-top:25px;
+            font-size:18px;
+            line-height:1.6;
+        ">
             I promise to be your safe place,<br>
             your biggest supporter,<br>
             and still annoy you every single day 😌
-        </p>
-
-        <p style="font-size:16px; margin-top:25px;">
+            <br><br>
             Happy Valentine’s Day ❤️<br>
             Yours. Permanently.
-        </p>
-
-        <p style="font-size:14px; margin-top:20px;">
-            This song is my favourite for you 🎧<br>
-            Press play when you’re ready.
-        </p>
+            <br><br>
+            <span style="font-size:14px; opacity:0.85;">
+                This song is my favourite for you 🎧<br>
+                Press play when you’re ready.
+            </span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Audio after user interaction (allowed by browser)
+    # Audio appears after interaction (browser-safe)
     st.audio("varoon.mp3")
 
     st.stop()
@@ -52,46 +58,22 @@ if st.session_state.yes:
 
 # ---------- MAIN PAGE ----------
 st.markdown("""
-<div style="
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-    padding:45px;
-    border-radius:30px;
-    text-align:center;
-    font-family:'Comic Sans MS', cursive;
-    color:#4b0033;
-    max-width:700px;
-    margin:auto;
-">
-    <h1>Pooja 💖</h1>
-    <h2>You chose me 🥺</h2>
+<h1 style="text-align:center; color:#ff4d6d;">Pooja 💖</h1>
+<h2 style="text-align:center;">Will you be my Valentine?</h2>
 
-    <div style="
-        background:#1c1f26;
-        color:white;
-        padding:25px;
-        border-radius:15px;
-        margin-top:25px;
-        font-size:18px;
-        line-height:1.6;
-    ">
-        I promise to be your safe place,<br>
-        your biggest supporter,<br>
-        and still annoy you every single day 😌
-        <br><br>
-        Happy Valentine’s Day ❤️<br>
-        Yours. Permanently.
-        <br><br>
-        <span style="font-size:14px; opacity:0.85;">
-            This song is my favourite for you 🎧<br>
-            Press play when you’re ready.
-        </span>
-    </div>
-</div>
+<p style="text-align:center; opacity:0.85; margin-top:20px;">
+I promise to listen to your yaps,<br>
+steal your food,<br>
+and still choose you when you’re mad ❤️
+</p>
+
+<p style="text-align:center; font-size:14px; opacity:0.7;">
+(No is just here to test your patience, chapli 😏)
+</p>
 """, unsafe_allow_html=True)
 
 
-
-# ---------- NO BUTTON PRANK (HTML ONLY) ----------
+# ---------- NO BUTTON PRANK (HTML + JS ONLY) ----------
 components.html("""
 <style>
 #box {
