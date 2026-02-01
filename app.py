@@ -1,160 +1,112 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="For Pooja 💖", layout="centered")
 
-# Initialize session state
-if "yes_clicked" not in st.session_state:
-    st.session_state.yes_clicked = False
+# ---------- STATE ----------
+if "yes" not in st.session_state:
+    st.session_state.yes = False
 
-# ---------------- YES PAGE ----------------
-if st.session_state.yes_clicked:
+
+# ---------- YES PAGE ----------
+if st.session_state.yes:
     st.balloons()
+    st.audio("varoon.mp3", loop=True)
 
-    st.audio("varoon.mp3", format="audio/mp3", loop=True)
+    st.markdown("""
+    <div style="
+        background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+        padding:40px;
+        border-radius:25px;
+        text-align:center;
+        font-family: 'Comic Sans MS', cursive;
+        color:#4b0033;
+    ">
+        <h1>Pooja 💖</h1>
+        <h2>You chose me 🥺</h2>
 
-    st.markdown(
-        """
-        <style>
-        body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        }
-        </style>
+        <p style="font-size:18px;">
+            I promise to be your safe place,<br>
+            your biggest supporter,<br>
+            and still annoy you every single day 😌
+        </p>
 
-        <div style="
-            padding: 45px;
-            border-radius: 30px;
-            text-align: center;
-            color: #4b0033;
-            font-family: 'Comic Sans MS', cursive;
-        ">
-            <h1>POOJA 💖</h1>
-            <h2>You really chose me 🥺</h2>
+        <p style="font-size:16px;">
+            Happy Valentine’s Day ❤️<br>
+            Yours. Permanently.
+        </p>
 
-            <p style="font-size:18px; margin-top:20px;">
-                I know I act chill,<br>
-                but this made my heart do that stupid happy thing.<br><br>
+        <p style="font-size:13px; opacity:0.7;">
+            (Lifetime subscription activated. No cancellations.)
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-                Thank you for being my favourite person,<br>
-                my comfort human,<br>
-                and the one I still choose even on my worst days ❤️
-            </p>
+    st.stop()
 
-            <p style="font-size:17px; margin-top:25px;">
-                I promise to:<br>
-                • be your go-to guy, always<br>
-                • listen to all your yaps (even the dramatic ones 😌)<br>
-                • still choose you when you’re mad at me 💕
-            </p>
 
-            <p style="font-size:16px; margin-top:30px;">
-                Happy Valentine’s Day 🫶<br>
-                Yours, annoyingly and permanently 😏
-            </p>
+# ---------- MAIN PAGE ----------
+st.markdown("""
+<h1 style="text-align:center; color:#ff4d6d;">Pooja 💖</h1>
+<h2 style="text-align:center;">Will you be my Valentine?</h2>
+<p style="text-align:center; opacity:0.8;">
+I promise to listen to your yaps,<br>
+steal your food,<br>
+and still choose you when you’re mad ❤️
+</p>
+""", unsafe_allow_html=True)
 
-            <p style="font-size:13px; opacity:0.7;">
-                (No refunds. No returns. Lifetime subscription activated.)
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
 
-# ---------------- MAIN PAGE ----------------
-else:
-    st.markdown(
-        """
-        <style>
-        body {
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-        }
+# ---------- PRANK UI (HTML + JS ONLY) ----------
+components.html("""
+<style>
+#box {
+    position: relative;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+button {
+    padding: 12px 28px;
+    border-radius: 25px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+#no {
+    position: absolute;
+    background: #ffd6e0;
+}
+</style>
 
-        #container {
-            position: relative;
-            height: 280px;
-            margin-top: 40px;
-            text-align: center;
-        }
+<div id="box">
+    <button id="yes" disabled>Yes 💘</button>
+    <button id="no">No 😈</button>
+</div>
 
-        .btn {
-            font-size: 18px;
-            padding: 12px 30px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Comic Sans MS', cursive;
-        }
+<script>
+const noBtn = document.getElementById("no");
+const box = document.getElementById("box");
 
-        #yes-btn {
-            background-color: #ff4d6d;
-            color: white;
-            margin-right: 25px;
-        }
+noBtn.addEventListener("mouseenter", () => {
+    const maxX = box.clientWidth - noBtn.offsetWidth;
+    const maxY = box.clientHeight - noBtn.offsetHeight;
 
-        #no-btn {
-            background-color: #ffd6e0;
-            color: #4b0033;
-            position: absolute;
-        }
-        </style>
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-        <div style="text-align:center; font-family:'Comic Sans MS', cursive; color:#4b0033;">
-            <h1>Pooja 💖</h1>
-            <h2>Will you be my Valentine?</h2>
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+</script>
+""", height=220)
 
-            <p style="margin-top:15px;">
-                I promise to be your safe place,<br>
-                your biggest supporter,<br>
-                and the person who still annoys you daily 😌
-            </p>
 
-            <p style="font-size:14px; opacity:0.8;">
-                (No is just here to test your patience, chapli 😏)
-            </p>
-        </div>
-
-        <div id="container">
-            <button class="btn" id="yes-btn" onclick="yesClicked()">Yes 💘</button>
-            <button class="btn" id="no-btn" onmouseover="moveButton(event)">No 😈</button>
-        </div>
-
-        <script>
-        function moveButton(event) {
-            const btn = document.getElementById("no-btn");
-            const container = document.getElementById("container");
-
-            const rect = container.getBoundingClientRect();
-            const buffer = 80;
-
-            let x = Math.random() * (rect.width - buffer);
-            let y = Math.random() * (rect.height - buffer);
-
-            const mouseX = event.clientX - rect.left;
-            const mouseY = event.clientY - rect.top;
-
-            if (Math.abs(x - mouseX) < 60) x += 80;
-            if (Math.abs(y - mouseY) < 40) y += 60;
-
-            btn.style.left = x + "px";
-            btn.style.top = y + "px";
-        }
-
-        function yesClicked() {
-            const streamlitInput = window.parent.document.querySelector(
-                'input[data-testid="stTextInput"]'
-            );
-            window.location.reload();
-        }
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Invisible Streamlit trigger
-    if st.button(""):
-        st.session_state.yes_clicked = True
-        st.experimental_rerun()
-
-    # Real Yes button trigger
+# ---------- REAL YES BUTTON ----------
+col1, col2, col3 = st.columns([1,2,1])
+with col2:
     if st.button("Yes 💘"):
-        st.session_state.yes_clicked = True
+        st.session_state.yes = True
         st.experimental_rerun()
