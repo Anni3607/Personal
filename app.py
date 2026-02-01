@@ -1,18 +1,15 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
-st.set_page_config(
-    page_title="For Pooja 💖",
-    layout="centered"
-)
+st.set_page_config(page_title="For Pooja 💖", layout="centered")
 
-params = st.experimental_get_query_params()
+# Initialize session state
+if "yes_clicked" not in st.session_state:
+    st.session_state.yes_clicked = False
 
 # ---------------- YES PAGE ----------------
-if "yes" in params:
+if st.session_state.yes_clicked:
     st.balloons()
 
-    # Play your song AFTER click (browser-safe)
     st.audio("varoon.mp3", format="audio/mp3", loop=True)
 
     st.markdown(
@@ -24,40 +21,38 @@ if "yes" in params:
         </style>
 
         <div style="
-            background: rgba(255,255,255,0.85);
             padding: 45px;
             border-radius: 30px;
             text-align: center;
             color: #4b0033;
             font-family: 'Comic Sans MS', cursive;
-            max-width: 500px;
-            margin: auto;
         ">
-            <h1>YAYYYYY 💕🎉</h1>
+            <h1>POOJA 💖</h1>
+            <h2>You really chose me 🥺</h2>
 
-            <h2>Pooja, you actually clicked Yes 🥺💖</h2>
+            <p style="font-size:18px; margin-top:20px;">
+                I know I act chill,<br>
+                but this made my heart do that stupid happy thing.<br><br>
 
-            <p style="font-size:18px; line-height:1.6;">
-                You know what this song means.<br>
-                And you know what <i>we</i> mean.<br><br>
-
-                Through every late-night call,<br>
-                every small fight,<br>
-                every “Kuch nahi hua” moment 😌,<br>
-                I still choose you.<br><br>
-
-                And just so we’re clear —<br>
-                <b>you are stuck with me forever hehe.</b><br>
-                No refunds. No returns. Only cuddles ❤️
+                Thank you for being my favourite person,<br>
+                my comfort human,<br>
+                and the one I still choose even on my worst days ❤️
             </p>
 
-            <p style="font-size:16px; margin-top:25px;">
-                Happy Valentine’s Day 💘<br>
-                Your favourite Sunflower 😏
+            <p style="font-size:17px; margin-top:25px;">
+                I promise to:<br>
+                • be your go-to guy, always<br>
+                • listen to all your yaps (even the dramatic ones 😌)<br>
+                • still choose you when you’re mad at me 💕
+            </p>
+
+            <p style="font-size:16px; margin-top:30px;">
+                Happy Valentine’s Day 🫶<br>
+                Yours, annoyingly and permanently 😏
             </p>
 
             <p style="font-size:13px; opacity:0.7;">
-                (Background music unlocked because you chose wisely 🎶)
+                (No refunds. No returns. Lifetime subscription activated.)
             </p>
         </div>
         """,
@@ -66,110 +61,100 @@ if "yes" in params:
 
 # ---------------- MAIN PAGE ----------------
 else:
-    components.html(
+    st.markdown(
         """
-        <html>
-        <head>
         <style>
-            body {
-                margin: 0;
-                height: 100vh;
-                background: radial-gradient(circle at top, #ffb6c1, #1a001a);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-family: 'Comic Sans MS', cursive;
-                color: #fff;
-            }
+        body {
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        }
 
-            .card {
-                background: rgba(0,0,0,0.55);
-                padding: 40px;
-                border-radius: 28px;
-                width: 380px;
-                text-align: center;
-                box-shadow: 0 0 35px rgba(255,105,180,0.45);
-            }
+        #container {
+            position: relative;
+            height: 280px;
+            margin-top: 40px;
+            text-align: center;
+        }
 
-            h1 {
-                margin-bottom: 5px;
-                color: #ff69b4;
-            }
+        .btn {
+            font-size: 18px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', cursive;
+        }
 
-            h2 {
-                margin-top: 0;
-            }
+        #yes-btn {
+            background-color: #ff4d6d;
+            color: white;
+            margin-right: 25px;
+        }
 
-            p {
-                font-size: 15px;
-                line-height: 1.6;
-                opacity: 0.9;
-            }
-
-            .buttons {
-                position: relative;
-                height: 90px;
-                margin-top: 25px;
-            }
-
-            button {
-                padding: 12px 28px;
-                border-radius: 30px;
-                border: none;
-                font-size: 16px;
-                cursor: pointer;
-            }
-
-            #yes {
-                background: #ff4d6d;
-                color: white;
-            }
-
-            #no {
-                background: #ffd6e0;
-                color: #4b0033;
-                position: absolute;
-            }
+        #no-btn {
+            background-color: #ffd6e0;
+            color: #4b0033;
+            position: absolute;
+        }
         </style>
-        </head>
 
-        <body>
-            <div class="card">
-                <h1>Pooja 💖</h1>
-                <h2>Will you be my Valentine?</h2>
+        <div style="text-align:center; font-family:'Comic Sans MS', cursive; color:#4b0033;">
+            <h1>Pooja 💖</h1>
+            <h2>Will you be my Valentine?</h2>
 
-                <p>
-                    I promise to:<br>
-                    • be your go-to guy<br>
-                    • listen to your yaps 😌<br>
-                    • still choose you even when you’re mad ❤️
-                </p>
+            <p style="margin-top:15px;">
+                I promise to be your safe place,<br>
+                your biggest supporter,<br>
+                and the person who still annoys you daily 😌
+            </p>
 
-                <p style="font-size:13px; opacity:0.75;">
-                    (No is here just to test your patience, chapli 😏)
-                </p>
+            <p style="font-size:14px; opacity:0.8;">
+                (No is just here to test your patience, chapli 😏)
+            </p>
+        </div>
 
-                <div class="buttons">
-                    <button id="yes" onclick="goYes()">Yes 💘</button>
-                    <button id="no" onmouseover="runAway()">No 😈</button>
-                </div>
-            </div>
+        <div id="container">
+            <button class="btn" id="yes-btn" onclick="yesClicked()">Yes 💘</button>
+            <button class="btn" id="no-btn" onmouseover="moveButton(event)">No 😈</button>
+        </div>
 
-            <script>
-                function runAway() {
-                    const btn = document.getElementById("no");
-                    const x = Math.random() * 240;
-                    const y = Math.random() * 60;
-                    btn.style.left = x + "px";
-                    btn.style.top = y + "px";
-                }
+        <script>
+        function moveButton(event) {
+            const btn = document.getElementById("no-btn");
+            const container = document.getElementById("container");
 
-                function goYes() {
-                    window.location.search = "?yes=true";
-                }
-            </script>
-        </body>
-        </html>
+            const rect = container.getBoundingClientRect();
+            const buffer = 80;
+
+            let x = Math.random() * (rect.width - buffer);
+            let y = Math.random() * (rect.height - buffer);
+
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            if (Math.abs(x - mouseX) < 60) x += 80;
+            if (Math.abs(y - mouseY) < 40) y += 60;
+
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        function yesClicked() {
+            const streamlitInput = window.parent.document.querySelector(
+                'input[data-testid="stTextInput"]'
+            );
+            window.location.reload();
+        }
+        </script>
         """,
-        height=650
+        unsafe_allow_html=True
     )
+
+    # Invisible Streamlit trigger
+    if st.button(""):
+        st.session_state.yes_clicked = True
+        st.experimental_rerun()
+
+    # Real Yes button trigger
+    if st.button("Yes 💘"):
+        st.session_state.yes_clicked = True
+        st.experimental_rerun()
