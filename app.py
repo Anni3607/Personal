@@ -62,17 +62,7 @@ if st.session_state.yes:
 
 # ---------- MAIN PAGE ----------
 st.markdown("""
-<h1 style="
-    text-align:center;
-    color:#ff7ac8;
-    text-shadow: 
-        0 0 6px rgba(255, 122, 200, 0.6),
-        0 0 12px rgba(255, 122, 200, 0.4);
-">
-    Pooja 💖
-</h1>
-""", unsafe_allow_html=True)
-
+<h1 style="text-align:center; color:#ff4d6d;">Pooja 💖</h1>
 <h2 style="text-align:center;">Will you be my Valentine?</h2>
 
 <p style="text-align:center; opacity:0.85; margin-top:20px;">
