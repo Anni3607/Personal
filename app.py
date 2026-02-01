@@ -41,7 +41,7 @@ if st.session_state.yes:
         ">
             I promise to be your safe place,<br>
             your biggest supporter,<br>
-            and still annoy you every single day 😌
+            and still be a pain in your ass (iykyk😌)
             <br><br>
             Happy Valentine’s Day ❤️<br>
             Yours. Permanently.
